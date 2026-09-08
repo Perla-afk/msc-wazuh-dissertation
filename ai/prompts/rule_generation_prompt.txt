@@ -1,0 +1,49 @@
+You are assisting with detection engineering for a controlled MSc Cybersecurity experiment.
+
+The task is to generate custom Wazuh XML rules for baseline detection gaps.
+
+Environment:
+- Wazuh version: 4.14.6
+- Server: Ubuntu Server 24.04.4 LTS
+- Endpoint: Windows 11 Pro
+- Wazuh agent: 4.14.6
+- Sysmon is installed on the endpoint.
+- Wazuh collects Microsoft-Windows-Sysmon/Operational.
+- The events being used are Sysmon Event ID 1 Process Create events.
+- Existing Sysmon Wazuh events can be referenced through the sysmon_event1 group.
+
+The baseline already detects Windows Command Shell T1059.003 and PowerShell T1059.001. Do not replace or modify these existing detections.
+
+The baseline evidence is included below.
+
+{BASELINE_EVIDENCE}
+
+Generate Wazuh custom rules to improve detection for the four baseline gaps.
+
+Requirements:
+- Compatible with Wazuh 4.14.6.
+- Use Sysmon Event ID 1 process creation telemetry.
+- Create one clear detection rule for each baseline gap.
+- Use rule IDs only from 110000 to 119999.
+- Use an appropriate alert level.
+- Include the expected MITRE ATT&CK ID.
+- Avoid unrelated executable matches.
+- Use suitable Sysmon fields.
+- Do not modify existing default Wazuh rules.
+- The rules must be suitable for placement in /var/ossec/etc/rules/.
+- Do not assume that the generated configuration is valid.
+- Do not copy or assume any previously developed human/manual rule solution.
+
+Return the response in this exact structure:
+
+1. COMPLETE XML RULE FILE
+Put the complete XML in one ```xml code block.
+
+2. RULE EXPLANATION
+Briefly explain the purpose of each generated rule.
+
+3. VALIDATION
+Give commands or checks that should be performed before deployment.
+
+4. LIMITATIONS
+Describe possible false positives, matching limitations or other risks.

@@ -1,0 +1,20 @@
+# Secrets
+.env
+*.key
+*api_key*
+secrets/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Generated evidence/output
+outputs/
+validation/
+*.log
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/

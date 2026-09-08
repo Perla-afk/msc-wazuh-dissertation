@@ -1,0 +1,16 @@
+<group name="manual_recon,windows,windows_security,">
+  <rule id="100104" level="1">
+    <if_sid>60104</if_sid>
+    <field name="win.system.eventID">^5157$</field>
+    <field name="win.eventdata.protocol">^6$</field>
+    <options>no_log</options>
+    <description>Blocked TCP probe candidate for Active Scanning correlation</description>
+  </rule>
+  <rule id="100105" level="7" frequency="6" timeframe="10" ignore="30">
+    <if_matched_sid>100104</if_matched_sid>
+    <same_field>win.eventdata.sourceAddress</same_field>
+    <same_field>win.eventdata.destAddress</same_field>
+    <description>Possible network scan: repeated blocked TCP connections from the same source</description>
+    <mitre><id>T1595.001</id></mitre>
+  </rule>
+</group>

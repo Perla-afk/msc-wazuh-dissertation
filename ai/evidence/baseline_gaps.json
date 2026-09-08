@@ -1,0 +1,24 @@
+{
+  "experiment": "AI-assisted Wazuh rule generation",
+  "wazuh_version": "4.14.6",
+  "endpoint": "Windows 11 Pro",
+  "agent_version": "4.14.6",
+  "telemetry": "Microsoft-Windows-Sysmon/Operational",
+  "event_type": "Sysmon Event ID 1 - Process Create",
+  "existing_detected_techniques": [
+    {"mitre_id": "T1059.003", "name": "Windows Command Shell", "status": "detected_by_baseline"},
+    {"mitre_id": "T1059.001", "name": "PowerShell", "status": "detected_by_baseline"}
+  ],
+  "baseline_gaps": [
+    {"executable": "systeminfo.exe", "mitre_id": "T1082", "technique": "System Information Discovery", "sysmon_event_present": true, "wazuh_alert_present": false},
+    {"executable": "whoami.exe", "mitre_id": "T1033", "technique": "System Owner/User Discovery", "sysmon_event_present": true, "wazuh_alert_present": false},
+    {"executable": "tasklist.exe", "mitre_id": "T1057", "technique": "Process Discovery", "sysmon_event_present": true, "wazuh_alert_present": false},
+    {"executable": "ipconfig.exe", "arguments": "/all", "mitre_id": "T1016", "technique": "System Network Configuration Discovery", "sysmon_event_present": true, "wazuh_alert_present": false}
+  ],
+  "available_sysmon_fields": [
+    "win.eventdata.image",
+    "win.eventdata.commandLine",
+    "win.eventdata.parentImage",
+    "win.eventdata.parentCommandLine"
+  ]
+}
